@@ -1,14 +1,18 @@
 require 'rails_helper'
 
-describe 'as a user' do
+describe 'as a user i can create new movie' do
   describe 'when i am on the new page' do
     scenario 'then i see a new form to create a movie' do
+      director = Director.create!(name: "Ilana")
 
-      visit "/movies/new"
+      visit new_director_movie_path(director)
 
-      fill_in "movie[title]",	with: "Drop Dead Fred"
+      fill_in "movie[title]",	with: "Finding Nemo"
+      fill_in "movie[description]",	with: "Fishys"
 
-      expect(page).to have_content("Create New Movie")
+      click_on "Create Movie"
+
+      expect(page).to have_content("Finding Nemo")
     end
   end
 end

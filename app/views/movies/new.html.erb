@@ -1,8 +1,9 @@
 <h1>Create New Movie</h1>
 
-<form action='/movies' method='post'>
- <input type='hidden' name='_method' value='PUT' />
- <input type='text' name='movie[title]' placeholder='title ' value='title'/><br/>
- <input type='text' name='movie[description]' placeholder='description' value='description'/><br/>
- <input type='submit' value='Submit'/>
-</form>
+<%= form_for [@director, @movie] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.submit %>
+<% end %>
